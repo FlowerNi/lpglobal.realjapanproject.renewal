@@ -1,0 +1,544 @@
+@charset "utf-8";
+@import "base";
+* {
+  box-sizing: border-box;
+}
+:root {
+  --leading-trim: calc((1em - 1lh) / 2);
+}
+:root,
+html {
+  font-size: 100px;
+  @include pc {
+  }
+  @include pcNarrow {
+    font-size: 100vw * 100 / $pcWidth;
+  }
+  @include sp {
+    font-size: 100vw * 200 / $spWidth;
+  }
+}
+
+body {
+  color: $color-txt;
+  font-weight: $baseFontWeight;
+  line-height: 1.5;
+  //font-feature-settings: "palt";
+  min-height: 100vh; /* Fallback */
+  min-height: calc(var(--vh, 1vh) * 100); //iOS safari用
+  @if $baseFontFamily==serif {
+    font-family: $serif;
+    @if $msFonts==true {
+      @include ie {
+        font-family: $msSerif;
+      }
+    }
+  } @else {
+    font-family: $sansSerif;
+    @if $msFonts==true {
+      @include ie {
+        font-family: $msSansSerif;
+      }
+    }
+  }
+  font-size: rem(14);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img,
+video {
+  max-width: 100%;
+}
+
+img {
+  height: auto;
+  &[src$="_sp.jpg"],
+  &[src$="_sp.png"],
+  &[src$="_sp.svg"] {
+    display: none;
+    @include sp {
+      display: inline-block;
+      & + img {
+        display: none;
+      }
+    }
+  }
+}
+
+a[href^="tel:"] {
+  pointer-events: none;
+  @include sp {
+    pointer-events: initial;
+  }
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.pr {
+  position: relative;
+}
+
+.pa {
+  position: absolute;
+}
+
+em {
+  font-style: normal;
+}
+
+/*//////////////////////////////////////////
+//  共通設定
+//////////////////////////////////////////*/
+
+.inner {
+  max-width: rem(1280 + 80);
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 rem(40);
+  @include sp {
+    padding: 0;
+  }
+}
+
+.picture {
+  display: block;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.mincho {
+  font-family: $serif;
+}
+
+.pr {
+  position: relative;
+}
+
+.pa {
+  position: absolute;
+}
+
+.sp {
+  display: none;
+}
+
+@include sp {
+  .pc {
+    display: none;
+  }
+  .sp {
+    display: block;
+  }
+  br.sp {
+    display: inline;
+  }
+}
+
+/*セレクトボックスの設定(全ブラウザ共通にするため)
+//設定やアイコンは用途に合わせて書き換え*/
+
+$select_height: rem(38);
+select::-ms-expand {
+  display: none;
+}
+
+label {
+  font-size: rem(15);
+}
+
+.select-box {
+  position: relative;
+  display: block;
+  padding: 0;
+  max-width: rem(70);
+  width: 100%;
+  height: $select_height;
+  &:after {
+    content: "";
+    position: absolute;
+    width: 9px;
+    height: 8px;
+    @include middle();
+    right: 1em;
+    z-index: 2;
+    background: url("../images/arrow-select.svg") 0 0 no-repeat;
+    pointer-events: none;
+  }
+  select {
+    display: block;
+    width: 100%;
+    height: $select_height;
+    padding-left: 1.5em;
+    margin: 0;
+    border: 1px solid #ccc;
+    background: #fff;
+    border-radius: rem(5);
+    outline: none;
+    box-sizing: border-box;
+    appearance: none;
+    line-height: 1;
+  }
+}
+/*//////////////////////////////////////////
+//  header
+//////////////////////////////////////////*/
+#mainHeader {
+}
+
+/*//////////////////////////////////////////
+//  drawer
+//////////////////////////////////////////*/
+
+.drawer.drawer--right {
+  //レフトの場合は drawer--left に書き換え
+  .drawer-hamburger {
+    width: rems(36);
+    height: rems(30);
+    left: rems(40);
+    top: rems(40);
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    padding: 0;
+    @include sp {
+      display: flex;
+    }
+  }
+  .drawer-open .drawer-hamburger {
+    top: 5%;
+  } //メニューの設定
+  .drawer-nav {
+    right: -100vw;
+    z-index: 99;
+    width: 84.5vw;
+    height: 100vh;
+    background: #fff;
+    overflow: scroll;
+    top: 0;
+    .sp-logo {
+      padding: rem(30) rem(50);
+      display: block;
+      border-bottom: 1px solid #c2c2c2;
+    }
+    .drawer-menu {
+      margin-top: 0;
+      padding: rem(20) rem(50);
+      li {
+        font-size: rems(30);
+        margin: 0.2rem 0;
+        width: 100%;
+        span {
+          display: block;
+          font-size: 0.12rem;
+        }
+      }
+    }
+  } //オーバーレイの設定
+  .drawer-overlay {
+    z-index: 98;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  .drawer-hamburger-icon {
+    background-color: #474747;
+    margin-top: 0;
+    width: 100%;
+  }
+  .drawer-hamburger-icon,
+  .drawer-hamburger-icon:after,
+  .drawer-hamburger-icon:before {
+    height: rems(4);
+    background-color: black;
+  }
+  .drawer-hamburger-icon:before {
+    width: 100%;
+    top: rems(-13);
+  }
+  .drawer-hamburger-icon:after {
+    top: rems(13);
+    width: 100%;
+  } //オープン時
+  &.drawer-open {
+    .drawer-nav {
+      right: 0;
+    }
+    .drawer-hamburger-icon {
+      background-color: transparent;
+    }
+    .drawer-hamburger-icon:before {
+      top: 0;
+      background: #fff;
+    }
+    .drawer-hamburger-icon:after {
+      top: 0;
+      background: #fff;
+    }
+  } //ドロップダウンを使う場合はここから下
+  .drawer-dropdown .drawer-caret {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    margin-left: 0;
+    -webkit-transition:
+      opacity 0.2s ease,
+      -webkit-transform 0.2s ease;
+    transition:
+      opacity 0.2s ease,
+      -webkit-transform 0.2s ease;
+    transition:
+      transform 0.2s ease,
+      opacity 0.2s ease;
+    transition:
+      transform 0.2s ease,
+      opacity 0.2s ease,
+      -webkit-transform 0.2s ease;
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+    vertical-align: middle;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    float: right;
+  }
+  .drawer-dropdown.open .drawer-caret {
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+  }
+  ion-icon {
+    --ionicon-stroke-width: 16px;
+    color: #474747;
+  }
+  .dr-link,
+  .drawer-dropdown-menu-item {
+    background: #eeeeee;
+  }
+  .dr-link {
+    font-size: 0.18rem;
+    padding: 0.8em 0 0.8em 0.75rem;
+  }
+  .drawer-dropdown-menu-item {
+    font-size: 0.18rem;
+    margin: 0.1em 0;
+    padding-left: 1.5em;
+    font-weight: normal;
+    color: #474747;
+  }
+  .drawer-dropdown-menu li a {
+    padding: {
+      top: 0.3em !important;
+      bottom: 0.3em !important;
+    }
+  }
+}
+
+/*//////////////////////////////////////////
+//  アニメーション設定
+//////////////////////////////////////////*/
+
+.fu {
+  transition: 1s;
+  opacity: 0;
+  transform: translate3d(0, 10%, 0);
+}
+
+.fu.fadeup {
+  opacity: 1;
+  transform: translateZ(0);
+}
+
+.fadeIn {
+  transition: all 0.9s linear;
+  opacity: 1 !important;
+}
+
+@keyframes fadeup {
+  0% {
+    opacity: 0;
+    visibility: hidden;
+    transform: translate3d(0, 10%, 0);
+  }
+  100% {
+    opacity: 1;
+    visibility: visible;
+    transform: translateZ(0);
+  }
+}
+
+.faderight {
+  animation-name: faderight;
+}
+
+@keyframes faderight {
+  0% {
+    opacity: 0; //transform: translate3d(0, 10%, 0);
+  }
+  100% {
+    opacity: 1; //transform: translateZ(0);
+  }
+}
+
+/*//////////////////////////////////////////
+//  slick上書き
+//////////////////////////////////////////*/
+
+//変数はコメントアウト。書き換えが必要なときはslick-thme.scssを参照
+/* Arrows */
+
+.slick-prev,
+.slick-next {
+  height: rem(4);
+  width: rem(80);
+  line-height: 0;
+  font-size: 0;
+  background: #fff;
+  border-radius: initial;
+  z-index: 10;
+  border: rem(3) solid $mcolor;
+
+  &:hover,
+  &:focus {
+    outline: none;
+    background: #fff;
+    color: transparent;
+    &:before {
+      //opacity: $slick-opacity-on-hover;
+    }
+  }
+  &.slick-disabled:before {
+    //opacity: $slick-opacity-not-active;
+  }
+  &:before {
+    content: "";
+  }
+}
+
+.slick-prev {
+  left: 22%;
+  @include sp {
+    left: 1.5%;
+  }
+  &:before {
+    display: inline-block;
+    width: rem(15);
+    height: rem(15);
+    border-bottom: rem(3) solid $mcolor;
+    border-right: rem(3) solid $mcolor;
+    transform: rotate(135deg);
+    margin-left: rem(8);
+    @include sp {
+      width: rems(15);
+      height: rems(15);
+      border-bottom: rems(3) solid $mcolor;
+      border-right: rems(3) solid $mcolor;
+      margin-left: rems(8);
+    }
+  }
+}
+
+.slick-next {
+  right: 22%;
+  @include sp {
+    right: 1.5%;
+  }
+  &:before {
+    display: inline-block;
+    width: rem(15);
+    height: rem(15);
+    border-bottom: rem(3) solid $mcolor;
+    border-right: rem(3) solid $mcolor;
+    transform: rotate(-45deg);
+    margin-right: rem(8);
+    @include sp {
+      width: rems(15);
+      height: rems(15);
+      border-bottom: rems(3) solid $mcolor;
+      border-right: rems(3) solid $mcolor;
+      margin-right: rems(8);
+    }
+  }
+}
+
+/* Dots */
+
+.slick-dotted.slick-slider {
+  margin-bottom: rem(0);
+}
+body {
+  .slick-dots {
+    position: absolute;
+    bottom: rem(37);
+    left: rem(47);
+    list-style: none;
+    display: flex;
+    gap: rem(16);
+    text-align: center;
+    height: 4px;
+    padding: 0;
+    margin: 0;
+    width: fit-content;
+    @include sp {
+      max-width: rem(272);
+      bottom: rem(16);
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+    }
+    li {
+      position: relative;
+      display: inline-block;
+      height: rem(4);
+      width: rem(80);
+      margin: 0 rem(5);
+      padding: 0;
+      cursor: pointer;
+      button {
+        border: 0;
+        background: transparent;
+        display: block;
+        height: 4px;
+        width: 100%;
+        outline: none;
+        line-height: 0px;
+        font-size: 0px;
+        color: transparent;
+        padding: 0;
+        cursor: pointer;
+
+        &:before {
+          content: "";
+          background: #fff;
+          position: absolute;
+          border-radius: initial;
+          top: 0;
+          left: 0; //content: $slick-dot-character;
+          display:block;
+          width: 100%;
+          height: 4px; //font-family: $slick-font-family;
+          //font-size: $slick-dot-size;
+          line-height: rem(15);
+          text-align: center; //color: $slick-dot-color;
+          opacity: 1;
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+        }
+        &:hover,
+        &:focus {
+          outline: none;
+        }
+      }
+      &.slick-active button:before {
+        background: $color-txt;
+      }
+    }
+  }
+}

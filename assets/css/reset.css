@@ -1,0 +1,83 @@
+* {
+	-webkit-tap-highlight-color: transparent;
+}
+
+body,
+dd,
+dl,
+dt,
+figure,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+html,
+li,
+ol,
+p,
+table,
+td,
+th,
+tr,
+ul {
+	font-size: inherit;
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+table {
+	border-collapse: collapse;
+	empty-cells: show;
+}
+
+td,
+th {
+	text-align: left;
+	vertical-align: top;
+}
+
+li {
+	list-style: none;
+}
+
+img {
+	vertical-align: top;
+}
+
+input,
+select,
+textarea {
+	font-family: inherit;
+}
+
+select::-ms-expand {
+	display: none;
+}
+
+[disabled] {
+	cursor: not-allowed;
+}
+
+button,
+input {
+	line-height: normal;
+
+	&[type=reset],
+	&[type=submit] {
+		&:not([disabled]) {
+			cursor: pointer;
+		}
+	}
+}
+
+button {
+	cursor: pointer;
+}

@@ -1,0 +1,641 @@
+@charset "utf-8";
+@import "_base";
+/*/////////////////////////////////////////
+//  共通設定
+/////////////////////////////////////////*/
+$lato: "Lato", sans-serif;
+.round {
+    border-radius: rem(128) rem(16) rem(128) rem(16);
+    @include sp {
+        border-radius: rem(64) rem(8) rem(64) rem(8);
+    }
+}
+.btn {
+    background-color: #d84a35;
+    color: #fff;
+    transition: all 0.3s ease-in-out;
+    max-width: rem(368);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: rem(80);
+    font-size: rem(24);
+    font-weight: 700;
+    line-height: 2;
+    border-radius: 4px;
+    &:hover {
+        background-color: lighten(#d84a35, 10%);
+        text-decoration: none;
+    }
+}
+
+.ttl-area {
+    .ttl {
+        font-family: $lato;
+        font-size: rem(80);
+        font-weight: 700;
+        line-height: 1;
+        color: $color-txt;
+        @include sp {
+            font-size: rem(48);
+        }
+    }
+    .sub-txt {
+        font-size: rem(24);
+        font-weight: 600;
+        line-height: (36/24);
+        color: $color-txt;
+        margin-top: rem(16);
+        @include sp {
+            font-size: rem(24);
+        }
+    }
+    &.center {
+        .ttl,
+        .sub-txt {
+            text-align: center;
+        }
+    }
+}
+
+/*/////////////////////////////////////////
+//  MV
+/////////////////////////////////////////*/
+#mv {
+    overflow-x: hidden;
+    position: relative;
+    @include sp {
+        padding-top: rem(24);
+    }
+    .inner {
+        display: flex;
+        justify-content: space-between;
+        padding-right: rem(80);
+        padding-top: rem(100);
+        @include sp {
+            flex-direction: column;
+            gap: rem(24);
+            padding-right: 0;
+            padding-left: 0;
+            align-items: center;
+            padding-top: 0;
+        }
+    }
+    .contents-area {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        gap: rem(160);
+        @include sp {
+            display: contents;
+            .txt-box {
+                display: contents;
+            }
+        }
+
+        .logo {
+            @include sp {
+                order: 1;
+                padding: 0 rem(32);
+            }
+            img {
+                width: rem(149);
+                @include sp {
+                    width: rem(51);
+                }
+            }
+        }
+        h1 {
+            font-size: rem(42);
+            line-height: 1.4;
+            font-weight: bold;
+            @include sp {
+                order: 2;
+                padding: 0 rem(32);
+                font-size: rem(28);
+                width: 100%;
+            }
+        }
+        .txt1 {
+            margin-top: rem(34);
+            font-size: rem(18);
+            line-height: 2;
+            color: #383838;
+            @include sp {
+                order: 4;
+                margin-top: 0;
+                width: 100%;
+                padding: 0 rem(32);
+            }
+        }
+        .txt2 {
+            font-size: rem(32);
+            line-height: (48/32);
+            font-weight: 700;
+            margin-top: rem(24);
+            @include sp {
+                order: 5;
+                margin-top: 0;
+                width: 100%;
+                padding: 0 rem(32);
+                font-size: rem(24);
+                line-height: (36/24);
+            }
+        }
+        .btn {
+            margin-top: rem(64);
+            @include sp {
+                order: 6;
+                margin-top: 0;
+            }
+        }
+    }
+    .slider-box {
+        // 右カラムは余白分だけ右いっぱいに
+        flex: 1;
+        margin-right: calc(50% - 50vw); // 右端をビューポートに合わせる
+        list-style: none;
+        padding: 0;
+        margin-left: 0;
+        max-width: 50vw;
+        height: auto;
+        @include sp {
+            order: 3;
+            width: 100%;
+            max-width: initial;
+            margin-right: initial;
+        }
+        li {
+            margin: 0;
+        }
+        img {
+            display: block;
+            width: 100%;
+            height: rem(960) !important;
+            height: auto;
+            object-fit: cover;
+            @extend .round;
+            @include sp {
+                height: rem(375) !important;
+            }
+        }
+    }
+}
+
+/*/////////////////////////////////////////
+//  WORRIES
+/////////////////////////////////////////*/
+
+#worries {
+    margin-top: rem(180);
+    padding-bottom: rem(10);
+    @include sp {
+        margin-top: rem(128);
+    }
+    .worries-contents {
+        @extend .round;
+        background: #f0f0f0;
+        padding: rem(70) rem(100);
+        display: flex;
+        justify-content: space-between;
+        gap: rem(20);
+        position: relative;
+        @include sp {
+            flex-direction: column;
+            padding: rem(80) rem(16);
+            align-items: center;
+            text-align: center;
+            gap: rem(32);
+        }
+        &:before {
+            content: "";
+            display: inline-block;
+            width: rem(385.29);
+            height: rem(165.03);
+            position: absolute;
+            left: rem(118);
+            bottom: rem(-10);
+            background: {
+                image: url("../images/img-worries.svg");
+                size: 100%;
+                position: center;
+                repeat: no-repeat;
+            }
+            @include sp {
+                width: rem(265.68);
+                height: rem(113.8);
+                left: rem(78.3);
+                bottom: rem(-68);
+            }
+        }
+        .ttl-area {
+            margin-top: rem(24);
+            @include sp {
+                margin-top: 0;
+                .sub-txt {
+                    text-align: left;
+                    padding: 0 rem(16);
+                }
+            }
+        }
+        .txt-area {
+            background: #fff;
+            border-radius: 48px 16px 48px 16px;
+            max-width: rem(606);
+            width: 100%;
+            padding: rem(49) rem(63);
+            display: flex;
+            flex-direction: column;
+            gap: rem(24);
+            @include sp {
+                padding: rem(48) rem(32);
+            }
+            li {
+                font-size: rem(24);
+                display: flex;
+                font-weight: 600;
+                text-align: left;
+                @include sp {
+                    padding-left: rem(8);
+                }
+                &:before {
+                    content: "•";
+                    color: $color-txt;
+                    margin-right: rem(8);
+                }
+            }
+        }
+    }
+}
+
+/*/////////////////////////////////////////
+//  img contents
+/////////////////////////////////////////*/
+.img-contents {
+    width: 100%;
+    margin-top: rem(200);
+    @include sp {
+        margin-top: rem(128);
+    }
+    picture {
+        img {
+            display: block;
+            overflow: hidden;
+            width: 100%;
+            height: rem(720);
+            object-fit: cover;
+            @extend .round;
+        }
+        @include sp {
+            height: rem(560);
+        }
+    }
+}
+
+/*/////////////////////////////////////////
+//  WE CAN DO
+/////////////////////////////////////////*/
+#wcd {
+    overflow-x: hidden;
+    margin-top: rem(200);
+    @include sp {
+        margin-top: rem(128);
+        overflow: initial;
+    }
+    .wcd-slider {
+        margin-right: calc(50% - 50vw);
+        margin-top: rem(80);
+        @include sp {
+            margin-top: rem(32);
+            margin-right: initial;
+            margin-left: rem(32);
+            li {
+                padding-left: rem(16);
+            }
+        }
+        .slide-box {
+            padding-left: rem(32);
+            @include sp {
+                padding-left: 0;
+            }
+
+            figure {
+                border-radius: rem(64) rem(16) 0 0;
+                overflow: hidden;
+                img {
+                    width: 100%;
+                }
+            }
+            .txt-area {
+                border-radius: 0 0 rem(64) rem(16);
+                background: #fbf8f4;
+                padding: rem(24) rem(40) rem(32);
+                h3 {
+                    font-size: rem(24);
+                    line-height: (36/24);
+                    font-weight: 600;
+                    min-height: rem(71);
+                }
+                p {
+                    margin-top: rem(8);
+                    font-size: rem(18);
+                    line-height: 2;
+                }
+            }
+        }
+    }
+}
+
+/*/////////////////////////////////////////
+//  MERIT
+/////////////////////////////////////////*/
+#merit {
+    margin-top: rem(200);
+    @include sp {
+        margin-top: rem(128);
+    }
+    .merit-contents {
+        @extend .round;
+        padding: rem(128) rem(105);
+        background: #fbf8f4;
+        position: relative;
+        @include sp {
+            padding: rem(80) rem(32);
+            display: flex;
+            flex-direction: column;
+            gap: rem(32);
+        }
+        &:before {
+            content: "";
+            display: inline-block;
+            width: rem(494.22);
+            height: rem(197.96);
+            position: absolute;
+            top: rem(80);
+            right: rem(100);
+            background: {
+                image: url("../images/img-merit.svg");
+                size: 100%;
+                position: center;
+                repeat: no-repeat;
+            }
+            @include sp {
+                position: static;
+                width: rem(311);
+                height: rem(124.57);
+                order: 2;
+            }
+        }
+    }
+    .ttl-area {
+        @include sp {
+            order: 1;
+        }
+    }
+    .txt-area {
+        margin-top: rem(48);
+        display: flex;
+        flex-direction: column;
+        gap: rem(32);
+        @include sp {
+            margin-top: 0;
+            order: 3;
+            gap: rem(32);
+        }
+        p {
+            font-size: rem(18);
+        }
+    }
+}
+
+/*/////////////////////////////////////////
+//  PARTNER
+/////////////////////////////////////////*/
+#partner {
+    margin-top: rem(200);
+    @include sp {
+        margin-top: rem(128);
+    }
+    .partner-slider {
+        margin-top: rem(40);
+        li {
+            padding: 0;
+            @include sp {
+                padding: 0;
+            }
+        }
+        figure {
+            display: flex;
+            width: rem(260);
+            height: rem(180);
+            //border-radius: 50%;
+            justify-content: center;
+            align-items: center;
+            //background: #fbf8f4;
+            @include sp {
+                width: rem(104);
+                height: rem(104);
+            }
+            img {
+                width: rem(240);
+                @include sp {
+                    width: rem(100);
+                }
+            }
+        }
+    }
+}
+
+/*/////////////////////////////////////////
+//  FAQ
+/////////////////////////////////////////*/
+#faq {
+    margin-top: rem(200);
+    @include sp {
+        margin-top: rem(128);
+    }
+    .inner {
+        display: flex;
+        justify-content: space-between;
+        gap: rem(20);
+        @include sp {
+            flex-direction: column;
+            justify-content: initial;
+            gap: rem(32);
+        }
+        .ttl-area {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-left: rem(80);
+            @include sp {
+                padding-left: 0;
+                align-items: center;
+            }
+        }
+        .txt-area {
+            @extend .round;
+            background: #fbf8f4;
+            padding: rem(106) rem(170);
+            max-width: rem(820);
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: rem(24);
+            @include sp {
+                padding: rem(80) rem(32);
+            }
+            div {
+                display: flex;
+                flex-direction: column;
+                gap: rem(32);
+                padding-bottom: rem(50);
+                @include sp {
+                    padding-bottom: rem(32);
+                }
+                &:not(:last-child) {
+                    border-bottom: 1px solid #afafaf;
+                }
+            }
+            dt {
+                font-size: rem(20);
+                font-weight: 500;
+            }
+            dd {
+                font-size: rem(24);
+                font-weight: 600;
+            }
+        }
+    }
+}
+
+/*/////////////////////////////////////////
+//  CONTACT
+/////////////////////////////////////////*/
+#contact {
+    margin-top: rem(200);
+    background: #040d62;
+    @extend .round;
+    padding-top: rem(135);
+    padding-bottom: rem(120);
+    @include sp {
+        margin-top: rem(128);
+        padding: rem(80) 0;
+    }
+    .inner {
+        display: flex;
+        justify-content: space-between;
+        max-width: rem(1080 + 80);
+        gap: rem(20);
+        @include sp {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            max-width: initial;
+            padding: 0 rem(32);
+            gap: rem(32);
+        }
+    }
+    .ttl-area {
+        .ttl {
+            color: #fff;
+        }
+    }
+    .txt-area {
+        max-width: rem(480);
+        width: 100%;
+        h3 {
+            font-size: rem(32);
+            font-weight: 600;
+            color: #fff;
+            @include sp {
+                font-size: rem(28);
+            }
+        }
+        p {
+            font-size: rem(24);
+            font-weight: 500;
+            color: #fff;
+            margin-top: rem(32);
+            @include sp {
+                margin-top: rem(24);
+            }
+        }
+        .btn {
+            margin-top: rem(80);
+            @include sp {
+                margin-top: rem(32);
+            }
+        }
+        span {
+            font-size: rem(16);
+            font-weight: 400;
+            color: #fff;
+            display: block;
+            margin-top: rem(40);
+            @include sp {
+                margin-top: rem(13);
+            }
+        }
+    }
+}
+
+/*/////////////////////////////////////////
+//  footer
+/////////////////////////////////////////*/
+#mainFooter {
+    padding-top: rem(200);
+    padding-bottom: rem(200);
+    @include sp {
+        padding-top: rem(128);
+        padding-bottom: rem(160);
+        padding-left: rem(16);
+        padding-right: rem(16);
+    }
+    .instagram {
+        width: rem(40);
+        margin: 0 auto;
+        display: block;
+    }
+    h2 {
+        text-align: center;
+        font-weight: 600;
+        font-size: rem(24);
+        margin-top: rem(40);
+        @include sp{
+            font-size: rem(20);
+            margin-top: rem(32);
+        }
+    }
+    ul {
+        text-align: center;
+        margin-top: rem(24);
+        li {
+            font-size: rem(18);
+            @include sp{
+                font-size: rem(16);
+            }
+        }
+        .addr {
+            line-height: (27/18);
+            margin-bottom: rem(24);
+            font-weight: 400;
+        }
+        .mail,
+        .tel {
+            display: flex;
+            justify-content: center;
+            gap: rem(8);
+            font-weight: 400;
+            margin-top: rem(12);
+            span {
+                font-weight: 600;
+            }
+        }
+    }
+    .btn{
+        margin: rem(24) auto 0;
+    }
+}
