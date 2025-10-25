@@ -3009,7 +3009,7 @@ section {
 .faq-question {
   padding: 0.2rem 0.4rem;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 0.24rem;
   position: relative;
   border-bottom: 1px solid #f0f0f0;
@@ -3054,7 +3054,7 @@ section {
 .faq-answer {
   padding: 0.2rem 0.4rem 0.4rem 0.4rem;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 0.24rem;
 }
 
