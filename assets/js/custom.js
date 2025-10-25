@@ -1,3 +1,18 @@
+// Header scroll effect - similar to Cursor.com
+$(document).ready(function() {
+    const headerInner = $('.header-inner');
+    
+    $(window).on('scroll', function() {
+        const scrollTop = $(window).scrollTop();
+        
+        if (scrollTop > 50) {
+            headerInner.addClass('scrolled');
+        } else {
+            headerInner.removeClass('scrolled');
+        }
+    });
+});
+
 $(function () {
     var pagetop = $('#page_top');
     // ボタン非表示
@@ -22,7 +37,6 @@ $(function () {
 $(function () {
     $('.mv-slider').slick({
         infinite: true,
-        initialSlide: 0,
         slidesToShow: 1,
         slidesToScroll: 1,
         autoplay: true,
@@ -30,9 +44,13 @@ $(function () {
         fade: true,
         speed: 1000,
         dots: true,
-        centerMode: false,
         arrows: false,
-        adaptiveHeight: true
+        pauseOnFocus: false,
+        pauseOnHover: false,
+        swipe: true,
+        touchMove: true,
+        draggable: true,
+        cssEase: 'linear'
     });
     $('.wcd-slider').slick({
         infinite: true,
@@ -221,11 +239,14 @@ const callback = function (mutationsList, observer) {
     }
     observer.disconnect();
 };
+
 // MutationObserverのインスタンスを作成
 var observer = new MutationObserver(callback);
 
-// 監視を開始
-observer.observe(targetNode, config);
+// 監視を開始（targetNodeが存在する場合のみ）
+if (targetNode) {
+    observer.observe(targetNode, config);
+}
 
 
 //////////////////////////////////////////////////////////
@@ -248,6 +269,35 @@ function callback() { //実行する動作
   target.classList.add('show');
 }
   */
+
+// REMOVED DUPLICATE CAROUSEL SCRIPT - KEEPING ONLY THE WORKING ONE
+
+// PRICE Section Mobile Slider - Removed (No longer needed)
+
+// Pause rotator animation on hover/focus and manage aria-hidden for accessibility
+$(function(){
+    var $rotator = $('.rotator');
+    if (!$rotator.length) return;
+
+    $rotator.on('mouseenter focusin', function(){
+        $(this).addClass('rotator-paused');
+        $(this).find('.rotator-item').css('animation-play-state','paused');
+    });
+    $rotator.on('mouseleave focusout', function(){
+        $(this).removeClass('rotator-paused');
+        $(this).find('.rotator-item').css('animation-play-state','running');
+    });
+
+    // keep aria-hidden in sync (only the currently visible one should be aria-hidden=false)
+    function updateAria(){
+        $('.rotator-item').each(function(){
+            var visible = $(this).css('opacity')>0.5;
+            $(this).attr('aria-hidden', !visible);
+        });
+    }
+    // run periodically to update aria (cheap interval)
+    setInterval(updateAria, 500);
+});
 
 
 //////////////////////////////////////////////////////////
@@ -272,3 +322,7 @@ function callback(entries) {
   });
 }
   */
+
+// REMOVED DUPLICATE CAROUSEL SCRIPT - KEEPING ONLY THE WORKING ONE
+
+// Pause rotator animation on hover/focus and manage aria-hidden for accessibility

@@ -1,0 +1,1754 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;300;400;500;600;700;900&display=swap");
+/*
+$serif: "游明朝体", "Yu Mincho", YuMincho, "ヒラギノ明朝 Pro", "Hiragino Mincho Pro", "MS P明朝", "MS PMincho", serif;
+$sansSerif: "游ゴシック体", "Yu Gothic", YuGothic, "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "MS Pゴシック", "MS PGothic", sans-serif;
+$sansSerifBold: "游ゴシック体", "Yu Gothic", YuGothic, "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "MS Pゴシック", "MS PGothic", sans-serif;
+$msSerif: "游明朝体", "Yu Mincho", YuMincho, "ヒラギノ明朝 Pro", "Hiragino Mincho Pro", "MS P明朝", "MS PMincho", serif;
+$msSansSerif: "游ゴシック体", "Yu Gothic", YuGothic, "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "MS Pゴシック", "MS PGothic", sans-serif;
+*/
+/*/////////////////////////////////////////
+//  共通設定
+/////////////////////////////////////////*/
+/* Removed border-radius styles */
+
+.btn {
+  background-color: #d84a35;
+  color: #fff;
+  transition: all 0.3s ease-in-out;
+  max-width: 368px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
+  font-size: 16px;
+  /* 16px */
+  font-weight: 700;
+  line-height: 2;
+  min-height: 44px;
+}
+
+@media screen and (max-width: 480px) {
+  .btn {
+    height: 88px;
+    min-height: 48px;
+    font-size: 14px;
+    /* 14px */
+  }
+}
+
+.btn:hover {
+  background-color: rgb(224.2531120332, 112.3029045643, 95.7468879668);
+  text-decoration: none;
+}
+
+.ttl-area .ttl {
+  font-family: "Lato", sans-serif;
+  font-size: 24px;
+  /* 24px */
+  font-weight: 700;
+  line-height: 1.2;
+  color: #040D62;
+}
+
+@media screen and (max-width: 768px) {
+  .ttl-area .ttl {
+    font-size: 28px;
+    /* 28px */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .ttl-area .ttl {
+    font-size: 28px;
+    /* 28px */
+  }
+}
+
+.ttl-area .sub-txt {
+  font-size: 18px;
+  /* 18px */
+  font-weight: 600;
+  line-height: 1.5;
+  color: #040D62;
+  margin-top: 16px;
+}
+
+@media screen and (max-width: 768px) {
+  .ttl-area .sub-txt {
+    font-size: 16px;
+    /* 16px */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .ttl-area .sub-txt {
+    font-size: 16px;
+    /* 16px */
+  }
+}
+
+.ttl-area.center .ttl,
+.ttl-area.center .sub-txt {
+  text-align: center;
+}
+
+/*/////////////////////////////////////////
+//  Header
+/////////////////////////////////////////*/
+#header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: transparent;
+  padding: 20px 40px;
+  transition: background 0.3s ease;
+}
+
+.header-inner {
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1580px;
+}
+
+.header-inner .logo {
+  margin: 0;
+}
+
+.header-inner .logo img {
+  width: 80px;
+  height: auto;
+  display: block;
+}
+
+.contact-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #d84a35;
+  color: #fff;
+  padding: 8px 24px;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.contact-icon:hover {
+  background-color: rgb(224, 112, 96);
+  text-decoration: none;
+}
+
+/*/////////////////////////////////////////
+//  MV
+/////////////////////////////////////////*/
+#mv {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  left: 0;
+  right: 0;
+}
+
+/* Add dark overlay for entire first view */
+#mv::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 2;
+}
+
+#mv .inner {
+  height: 100%;
+  width: 100vw;
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  max-width: none;
+}
+
+@media screen and (max-width: 768px) {
+  #mv .inner {
+    flex-direction: column;
+    gap: 24px;
+    padding-left: 32px;
+    padding-right: 32px;
+    align-items: center;
+    padding-top: 24px;
+  }
+
+  /* Remove the third gap: space between hero image (slider) and the first paragraph */
+  #mv .slider-box {
+    margin-bottom: -24px;
+  }
+}
+
+/* Hero mobile refinements */
+@media screen and (max-width: 768px) {
+
+  /* Hide mobile line-breaks inside headline */
+  #mv .contents-area h1 br.sp {
+    display: none;
+  }
+
+  /* Match txt2 font-size to h1 on tablet/mobile */
+  #mv .contents-area .txt2 {
+    font-size: 20px;
+    /* align with h1 at <=768px */
+    margin-bottom: 0;
+    /* remove gap before button */
+  }
+
+  /* Remove extra paddings and tighten gaps after the first block */
+  #mv .contents-area .txt1 {
+    padding: 0;
+  }
+
+  #mv .contents-area .txt2 {
+    padding: 0;
+    margin-top: 12px;
+  }
+
+  /* Full-width, user-friendly button */
+  #mv .contents-area .btn {
+    max-width: none;
+    width: 100%;
+    margin: 0;
+    /* remove extra margins */
+    height: 64px;
+    font-size: 18px;
+    /* 18px */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #mv .inner {
+    padding-left: 12px;
+    padding-right: 12px;
+    gap: 24px;
+  }
+
+  /* Keep the same adjustment for small mobile */
+  #mv .slider-box {
+    margin-bottom: -24px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+
+  /* Keep txt2 matching h1 size on small mobile */
+  #mv .contents-area .txt2 {
+    font-size: 18px;
+    /* align with h1 at <=480px */
+  }
+
+  /* Remove paddings also on small mobile */
+  #mv .contents-area .txt1,
+  #mv .contents-area .txt2 {
+    padding: 0;
+  }
+
+  /* Button remains full-width with comfortable height */
+  #mv .contents-area .btn {
+    height: 60px;
+  }
+}
+
+#mv .contents-area {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 0.2rem;
+}
+
+#mv .contents-area .txt-box {
+  color: #fff;
+  padding: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+@media screen and (max-width: 768px) {
+  #mv .contents-area {
+    padding-top: 60px;
+    text-align: center;
+  }
+
+  #mv .contents-area .txt-box {
+    padding: 20px;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #mv .contents-area {
+    padding-top: 40px;
+  }
+
+  #mv .contents-area .txt-box {
+    padding: 15px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #mv .contents-area .logo {
+    order: 1;
+    padding: 0 32px;
+  }
+}
+
+#mv .contents-area .logo img {
+  width: 149px;
+}
+
+@media screen and (max-width: 768px) {
+  #mv .contents-area .logo img {
+    width: 51px;
+  }}
+
+#mv .contents-area h1 {
+  font-size: 24px;
+  /* 24px */
+  line-height: 1.4;
+  font-weight: bold;
+}
+
+@media screen and (max-width: 768px) {
+  #mv .contents-area h1 {
+    order: 2;
+    padding: 0 32px;
+    font-size: 20px;
+    /* 20px */
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #mv .contents-area h1 {
+    font-size: 20px;
+    /* 20px */
+    line-height: 1.3;
+    padding: 0 24px;
+    text-align: center;
+  }}
+
+#mv .contents-area .txt1 {
+  margin-top: 34px;
+  font-size: 16px;
+  /* 16px */
+  line-height: 1.8;
+  color: #383838;
+}
+
+@media screen and (max-width: 768px) {
+  #mv .contents-area .txt1 {
+    order: 4;
+    margin-top: 0;
+    width: 100%;
+    padding: 0 32px;
+  }}
+
+@media screen and (max-width: 480px) {
+  #mv .contents-area .txt1 {
+    font-size: 14px;
+    /* 14px */
+    line-height: 1.6;
+    padding: 0 24px;
+  }}
+
+#mv .contents-area .txt2 {
+  font-size: 20px;
+  /* 20px */
+  line-height: 1.5;
+  font-weight: 700;
+  margin-top: 24px;
+}
+
+@media screen and (max-width: 768px) {
+  #mv .contents-area .txt2 {
+    order: 5;
+    margin-top: 0;
+    width: 100%;
+    padding: 0 32px;
+    font-size: 18px;
+    /* 18px */
+    line-height: 1.5;
+  }}
+
+@media screen and (max-width: 480px) {
+  #mv .contents-area .txt2 {
+    font-size: 20px;
+    /* 20px */
+    line-height: 1.4;
+    padding: 0 24px;
+  }}
+
+#mv .contents-area .btn {
+  margin-top: 64px;
+  margin: auto;
+  padding: 20px 40px;
+}
+
+@media screen and (max-width: 768px) {
+  #mv .contents-area .btn {
+    order: 6;
+    margin-top: 0;
+    margin: 0;
+    /* remove all margins on mobile */
+    max-width: none;
+    width: 100%;
+  }}
+
+@media screen and (max-width: 480px) {
+  #mv .contents-area .btn {
+    max-width: none;
+    margin: 0;
+    /* ensure no margin on small mobile */
+  }
+}
+
+/* Ensure no paddings on h1 and p inside txt-box on mobile */
+@media screen and (max-width: 768px) {
+
+  #mv .contents-area .txt-box h1,
+  #mv .contents-area .txt-box p {
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 480px) {
+
+  #mv .contents-area .txt-box h1,
+  #mv .contents-area .txt-box p {
+    padding: 0;
+  }
+}
+
+#mv .slider-box {
+  height: 100vh;
+  width: 100%;
+  margin: 0;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+#mv .mv-slider,
+#mv .mv-slider .slick-list,
+#mv .mv-slider .slick-track,
+#mv .mv-slider li {
+  height: 100vh;
+  width: 100%;
+}
+
+#mv .slider-box li {
+  margin: 0;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+#mv .slider-box img {
+  display: block;
+  width: 100%;
+  min-width: 100vw;
+  height: 100vh !important;
+  object-fit: cover;
+  object-position: center;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Maintain slick dots */
+/* Override the common.css slick dots specifically for #mv */
+#mv .slick-dots {
+  position: absolute;
+  bottom: 37px;
+  list-style: none;
+  display: flex !important;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  justify-content: center;
+  gap: 16px;
+  z-index: 10;
+}
+
+#mv .slick-dots li {
+  position: relative;
+  display: inline-block;
+  width: 80px;
+  height: 4px;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+#mv .slick-dots li button {
+  font-size: 0;
+  line-height: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  color: transparent;
+  border: 0;
+  outline: none;
+  background: transparent;
+  padding: 0;
+}
+
+#mv .slick-dots li button:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.5);
+  -webkit-font-smoothing: antialiased;
+  content: '•';
+  text-align: center;
+  color: #fff;
+  opacity: 0.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+#mv .slick-dots li button:hover:before {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+#mv .slick-dots li.slick-active button:before {
+  background: #fff;
+}
+
+@media screen and (max-width: 768px) {
+  #mv .slider-box {
+    order: -1;
+  }
+
+  #mv .slider-box img {
+    height: 100vh !important;
+  }
+}
+
+/*/////////////////////////////////////////
+//  WORRIES
+/////////////////////////////////////////*/
+#worries {
+  margin-top: 180px;
+  padding-bottom: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  #worries {
+    margin-top: 64px;
+    /* Reduced by half */
+  }
+}
+
+#worries .worries-contents {
+  background: #f0f0f0;
+  padding: 70px 100px;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  position: relative;
+}
+
+@media screen and (max-width: 768px) {
+  #worries .worries-contents {
+    flex-direction: column;
+    padding: 64px 16px;
+    align-items: center;
+    text-align: center;
+    gap: 32px;
+  }}
+
+@media screen and (max-width: 480px) {
+  #worries {
+    margin-top: 48px;
+    /* Further reduced for small mobile */
+  }
+
+  #worries .worries-contents {
+    padding: 32px 12px 64px 12px;
+    gap: 24px;
+  }}
+
+#worries .worries-contents:before {
+  content: "";
+  display: inline-block;
+  width: 385.29px;
+  height: 165.03px;
+  position: absolute;
+  left: 118px;
+  bottom: -10px;
+  background-image: url("../images/img-worries.svg");
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@media screen and (max-width: 768px) {
+  #worries .worries-contents:before {
+    width: 265.68px;
+    height: 113.8px;
+    left: 78.3px;
+    bottom: -68px;
+  }}
+
+#worries .worries-contents .ttl-area {
+  margin-top: 24px;
+}
+
+@media screen and (max-width: 768px) {
+  #worries .worries-contents .ttl-area {
+    margin-top: 0;
+  }
+
+  #worries .worries-contents .ttl-area .sub-txt {
+    text-align: left;
+    padding: 0 16px;
+  }}
+
+#worries .worries-contents .txt-area {
+  background: #fff;
+  border-radius: 48px 16px 48px 16px;
+  max-width: 606px;
+  width: 100%;
+  padding: 49px 63px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+@media screen and (max-width: 768px) {
+  #worries .worries-contents .txt-area {
+    padding: 48px 32px;
+  }
+
+  #worries .worries-contents .txt-area li {
+    font-size: 16px;
+    /* 24px on PC/tablet */
+    display: flex;
+    font-weight: 600;
+    text-align: left;
+  }}
+
+@media screen and (max-width: 480px) {
+  #worries .worries-contents .txt-area {
+    padding: 40px 24px;
+    gap: 20px;
+  }
+
+  #worries .worries-contents .txt-area li {
+    font-size: 14px;
+    /* 14px */
+    line-height: 1.6;
+  }}
+
+@media screen and (max-width: 768px) {
+  #worries .worries-contents .txt-area li {
+    padding-left: 8px;
+  }
+
+  /* Hide explicit mobile line breaks within worries list on small screens */
+  #worries .worries-contents .txt-area li br.sp {
+    display: none;
+  }
+}
+
+#worries .worries-contents .txt-area li:before {
+  content: "•";
+  color: #040D62;
+  margin-right: 8px;
+}
+
+
+/*/////////////////////////////////////////
+//  img contents
+/////////////////////////////////////////*/
+.img-contents {
+  width: 100%;
+  margin-top: 200px;
+}
+
+@media screen and (max-width: 768px) {
+  .img-contents {
+    margin-top: 104px;
+    /* halve top spacing on mobile */
+  }}
+
+.img-contents picture img {
+  display: block;
+  overflow: hidden;
+  width: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
+@media screen and (max-width: 768px) {
+  .img-contents picture {
+    height: 420px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .img-contents picture {
+    height: 360px;
+  }}
+
+/*/////////////////////////////////////////
+//  img contents1
+/////////////////////////////////////////*/
+.img-contents1 {
+  width: 100%;
+  margin-top: 2rem;
+}
+
+@media screen and (max-width: 768px) {
+  .img-contents1 {
+    margin-top: 1.04rem;
+    /* halve top spacing on mobile */
+  }
+}
+
+@media screen and (max-width:480px) {
+  .img-contents1 {
+    margin-top: 0.48rem;
+    /* halve top spacing on mobile */
+  }
+}
+
+.img-contents1 picture img {
+  display: block;
+  overflow: hidden;
+  width: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
+@media screen and (max-width: 768px) {
+  .img-contents1 picture {
+    height: 4.2rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .img-contents1 picture {
+    height: 3.6rem;
+  }
+}
+
+/*/////////////////////////////////////////
+//  WE CAN DO
+/////////////////////////////////////////*/
+#wcd {
+  overflow-x: hidden;
+  margin-top: 2rem;
+}
+
+@media screen and (max-width: 768px) {
+  #wcd {
+    margin-top: 0.64rem;
+    /* Reduced by half */
+    overflow: initial;
+  }
+
+  /* WCD */
+  .tb {
+    display: none;
+  }
+}
+
+#wcd .wcd-slider {
+  margin-right: calc(50% - 50vw);
+  margin-top: 0.8rem;
+}
+
+@media screen and (max-width: 768px) {
+  #wcd .wcd-slider {
+    margin-top: 0.32rem;
+    margin-right: initial;
+  }
+
+  #wcd .wcd-slider li {
+    padding-left: 0.16rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #wcd {
+    margin-top: 0.48rem;
+    /* Further reduced for small mobile */
+  }
+
+  /* #wcd .wcd-slider {
+    margin-left: 0.16rem;
+    margin-right: 0.16rem;
+  } */
+  #wcd .wcd-slider li {
+    padding-left: 0.08rem;
+  }
+
+  #wcd .wcd-slider .slide-box .txt-area {
+    padding: 0.2rem 0.24rem 0.24rem;
+  }
+
+  #wcd .wcd-slider .slide-box .txt-area h3 {
+    font-size: 0.16rem;
+    /* 16px */
+    min-height: auto;
+    line-height: 1.4;
+  }
+
+  #wcd .wcd-slider .slide-box .txt-area p {
+    font-size: 0.14rem;
+    /* 14px */
+    line-height: 1.6;
+  }
+}
+
+#wcd .wcd-slider .slide-box {
+  padding-left: 0.32rem;
+}
+
+@media screen and (max-width: 768px) {
+  #wcd .wcd-slider .slide-box {
+    padding-left: 0;
+  }
+}
+
+#wcd .wcd-slider .slide-box figure {
+  overflow: hidden;
+}
+
+#wcd .wcd-slider .slide-box figure img {
+  width: 100%;
+}
+
+#wcd .wcd-slider .slide-box .txt-area {
+  border-radius: 0 0 0.64rem 0.16rem;
+  background: #fbf8f4;
+  padding: 0.24rem 0.24rem 0.24rem;
+}
+
+#wcd .wcd-slider .slide-box .txt-area h3 {
+  font-size: 0.16rem;
+  /* 16px */
+  line-height: 1.5;
+  font-weight: 600;
+  min-height: 0.64rem;
+}
+
+#wcd .wcd-slider .slide-box .txt-area p {
+  margin-top: 0.08rem;
+  font-size: 0.14rem;
+  /* 14px */
+  line-height: 1.6;
+}
+
+/*/////////////////////////////////////////
+//  MERIT
+/////////////////////////////////////////*/
+#merit {
+  margin-top: 2rem;
+}
+
+@media screen and (max-width: 768px) {
+  #merit {
+    margin-top: 0.64rem;
+    /* Reduced by half */
+  }
+}
+
+#merit .merit-contents {
+  padding: 1.28rem 1.05rem;
+  background: #fbf8f4;
+  position: relative;
+}
+
+@media screen and (max-width: 768px) {
+  #merit .merit-contents {
+    padding: 0.4rem 0.32rem;
+    /* halve top padding on mobile */
+    display: flex;
+    flex-direction: column;
+    gap: 0.32rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+
+  /* Center MERIT title/subtitle like second section */
+  #merit .ttl-area .ttl,
+  #merit .ttl-area .sub-txt {
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #merit {
+    margin-top: 0.48rem;
+    /* Further reduced for small mobile */
+  }
+
+  #merit .merit-contents {
+    padding: 0.32rem 0.24rem;
+    gap: 0.24rem;
+  }
+
+  #merit .txt-area p {
+    font-size: 0.14rem;
+    /* 14px */
+    line-height: 1.7;
+  }
+}
+
+#merit .merit-contents:before {
+  content: "";
+  display: inline-block;
+  width: 4.9422rem;
+  height: 1.9796rem;
+  position: absolute;
+  top: 0.8rem;
+  right: 1rem;
+  background-image: url("../images/img-merit.svg");
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@media screen and (max-width: 768px) {
+  #merit .merit-contents:before {
+    position: static;
+    width: 3.11rem;
+    height: 1.2457rem;
+    order: 2;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #merit .ttl-area {
+    order: 1;
+  }
+}
+
+#merit .txt-area {
+  margin-top: 0.48rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.32rem;
+}
+
+@media screen and (max-width: 768px) {
+  #merit .txt-area {
+    margin-top: 0;
+    order: 3;
+    gap: 0.32rem;
+  }
+}
+
+/*/////////////////////////////////////////
+//  PARTNER
+/////////////////////////////////////////*/
+#partner {
+  margin-top: 2rem;
+}
+
+@media screen and (max-width: 768px) {
+  #partner {
+    margin-top: 0.64rem;
+    /* Reduced by half */
+  }
+}
+
+#partner .partner-slider {
+  margin-top: 0.4rem;
+}
+
+#partner .partner-slider li {
+  padding: 0;
+}
+
+@media screen and (max-width: 768px) {
+  #partner .partner-slider li {
+    padding: 0;
+  }
+}
+
+#partner .partner-slider figure {
+  display: flex;
+  width: 2.6rem;
+  height: 1.8rem;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+  #partner .partner-slider figure {
+    width: 1.04rem;
+    height: 1.04rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #partner {
+    margin-top: 0.48rem;
+    /* Further reduced for small mobile */
+  }
+}
+
+#partner .partner-slider figure img {
+  width: 2.4rem;
+}
+
+@media screen and (max-width: 768px) {
+  #partner .partner-slider figure img {
+    width: 1rem;
+  }
+}
+
+/*/////////////////////////////////////////
+//  FAQ
+/////////////////////////////////////////*/
+#faq {
+  margin-top: 2rem;
+}
+
+@media screen and (max-width: 768px) {
+  #faq {
+    margin-top: 0.64rem;
+    /* Reduced by half */
+  }
+}
+
+#faq .inner {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.2rem;
+}
+
+@media screen and (max-width: 768px) {
+  #faq .inner {
+    flex-direction: column;
+    justify-content: initial;
+    gap: 0.32rem;
+  }
+}
+
+#faq .inner .ttl-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 0.8rem;
+}
+
+@media screen and (max-width: 768px) {
+  #faq .inner .ttl-area {
+    padding-left: 0;
+    align-items: center;
+  }
+}
+
+#faq .inner .txt-area {
+  background: #fbf8f4;
+  padding: 1.06rem 1.7rem;
+  max-width: 8.2rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.24rem;
+}
+
+@media screen and (max-width: 768px) {
+  #faq .inner .txt-area {
+    padding: 0.6rem 0.24rem;
+    /* reduce container padding on mobile */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #faq {
+    margin-top: 0.48rem;
+    /* Further reduced for small mobile */
+  }
+
+  #faq .inner .txt-area {
+    padding: 0.48rem 0.24rem 0.32rem 0.24rem;
+  }
+
+  #faq .inner .txt-area dt {
+    font-size: 0.16rem;
+    /* 16px */
+    line-height: 1.5;
+  }
+
+  #faq .inner .txt-area dd {
+    font-size: 0.14rem;
+    /* 14px */
+    line-height: 1.6;
+  }
+}
+
+#faq .inner .txt-area div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.32rem;
+  padding-bottom: 0.5rem;
+}
+
+@media screen and (max-width: 768px) {
+  #faq .inner .txt-area div {
+    padding-bottom: 0.16rem;
+    /* halve bottom spacing between QA items */
+    gap: 0.16rem;
+    /* halve gap between dt and dd */
+  }
+}
+
+#faq .inner .txt-area div:not(:last-child) {
+  border-bottom: 1px solid #afafaf;
+}
+
+#faq .inner .txt-area dt {
+  font-size: 0.18rem;
+  /* 18px */
+  font-weight: 500;
+}
+
+#faq .inner .txt-area dd {
+  font-size: 0.16rem;
+  /* 16px */
+  font-weight: 600;
+}
+
+/*/////////////////////////////////////////
+//  CONTACT
+/////////////////////////////////////////*/
+#contact {
+  margin-top: 2rem;
+  background: #040d62;
+  padding-top: 1.35rem;
+  padding-bottom: 1.2rem;
+}
+
+@media screen and (max-width: 768px) {
+  #contact {
+    margin-top: 0.64rem;
+    /* Reduced by half */
+    padding: 0.48rem 0;
+  }
+}
+
+#contact .inner {
+  display: flex;
+  justify-content: space-between;
+  max-width: 11.6rem;
+  gap: 0.2rem;
+}
+
+@media screen and (max-width: 768px) {
+  #contact .inner {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: initial;
+    padding: 0 0.32rem;
+    gap: 0.32rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #contact {
+    margin-top: 0.48rem;
+    /* Further reduced for small mobile */
+  }
+
+  #contact .inner {
+    padding: 0 0.24rem;
+    gap: 0.24rem;
+  }
+
+  #contact .txt-area h3 {
+    font-size: 0.18rem;
+    /* 18px */
+    line-height: 1.4;
+  }
+
+  #contact .txt-area p {
+    font-size: 0.14rem;
+    /* 14px */
+    line-height: 1.5;
+  }
+
+  #contact .txt-area .btn {
+    max-width: 2.8rem;
+  }
+}
+
+#contact .ttl-area .ttl {
+  color: #fff;
+}
+
+#contact .txt-area {
+  max-width: 4.8rem;
+  width: 100%;
+}
+
+#contact .txt-area h3 {
+  font-size: 0.24rem;
+  /* 24px on PC */
+  font-weight: 600;
+  color: #fff;
+}
+
+@media screen and (max-width: 768px) {
+  #contact .txt-area h3 {
+    font-size: 0.20rem;
+  }
+}
+
+
+/* Contact mobile refinements */
+@media screen and (max-width: 768px) {
+
+  /* Hide mobile line-breaks in contact headline */
+  #contact .txt-area h3 br.sp {
+    display: none;
+  }
+
+  /* Hide mobile line-breaks in contact paragraph */
+  #contact .txt-area p br.sp {
+    display: none;
+  }
+
+  /* Make button sizing consistent with hero */
+  #contact .txt-area .btn {
+    max-width: none;
+    width: 100%;
+    margin: 0;
+    /* remove extra margins */
+    height: 0.64rem;
+    font-size: 0.18rem;
+    /* 18px */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #contact .txt-area .btn {
+    height: 0.6rem;
+  }
+}
+
+/* Footer button same treatment on mobile */
+@media screen and (max-width: 768px) {
+  #mainFooter .btn {
+    max-width: none;
+    width: 100%;
+    height: 0.64rem;
+    font-size: 0.18rem;
+    margin: 0.24rem 0 0;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #mainFooter .btn {
+    height: 0.6rem;
+  }
+}
+
+/* Restore original layout for tablets (481px–768px) */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+
+  /* Hero */
+  #mv .slider-box {
+    margin-bottom: 0;
+  }
+
+  #mv .inner {
+    padding-left: 0.4rem;
+    padding-right: 0.4rem;
+    padding-top: 0.6rem;
+    margin: 0;
+  }
+
+  #mv .contents-area h1 br.sp {
+    display: inline;
+  }
+
+  #mv .contents-area h1 {
+    font-size: clamp(0.20rem, 1.8vw, 0.24rem);
+  }
+
+  #mv .contents-area .txt1 {
+    padding: 0 0.2rem;
+    font-size: clamp(0.12rem, 0.9vw, 0.14rem);
+  }
+
+  #mv .contents-area .txt2 {
+    padding: 0 0.2rem;
+    margin-top: 0.06rem;
+    font-size: clamp(0.16rem, 1.2vw, 0.18rem);
+  }
+
+  #mv .contents-area .btn {
+    width: 100%;
+    height: 0.6rem;
+    font-size: 0.16rem;
+  }
+
+  /* Section titles and subtitles - balanced for tablet */
+  .ttl-area .ttl {
+    font-size: clamp(0.28rem, 2.4vw, 0.32rem);
+  }
+
+  .ttl-area .sub-txt {
+    font-size: 0.16rem;
+  }
+
+  /* Second section spacing and height */
+  .img-contents {
+    margin-top: 0.8rem;
+  }
+
+  .img-contents picture {
+    height: 4.0rem;
+  }
+
+  /* MERIT (5th section) */
+  #merit {
+    margin-top: 0.8rem;
+  }
+
+  #merit .merit-contents {
+    padding: 0.48rem 0.2rem;
+  }
+
+  #merit .ttl-area .ttl,
+  #merit .ttl-area .sub-txt {
+    text-align: left;
+  }
+
+  /* FAQ spacing */
+  #faq {
+    margin-top: 0.8rem;
+  }
+
+  #faq .inner .txt-area {
+    padding: 0.4rem 0.2rem;
+  }
+
+  #faq .inner .txt-area div {
+    padding-bottom: 0.16rem;
+    gap: 0.16rem;
+  }
+
+  #faq .inner .txt-area dt {
+    font-size: 0.14rem;
+  }
+
+  #faq .inner .txt-area dd {
+    font-size: 0.16rem;
+  }
+
+  /* Contact */
+  #contact {
+    margin-top: 0.8rem;
+  }
+
+  #contact .txt-area h3 br.sp,
+  #contact .txt-area p br.sp {
+    display: inline;
+  }
+
+  #contact .txt-area h3 {
+    font-size: 0.18rem;
+  }
+
+  #contact .txt-area p {
+    font-size: 0.16rem;
+  }
+
+  #contact .txt-area .btn {
+    max-width: 2.8rem;
+    width: auto;
+    margin: 0.16rem auto 0;
+    height: 0.6rem;
+    font-size: 0.16rem;
+  }
+
+  /* Footer button */
+  #mainFooter .btn {
+    max-width: 3.68rem;
+    width: 100%;
+    height: 0.6rem;
+    font-size: 0.16rem;
+    margin: 0.16rem auto 0;
+  }
+}
+
+/* Restore original layout for desktop (>=769px) */
+@media screen and (min-width: 769px) {
+
+  /* Buttons */
+  .btn {
+    font-size: 0.24rem;
+    height: 0.8rem;
+  }
+
+  /* Titles */
+  .ttl-area .ttl {
+    font-size: 0.8rem;
+    line-height: 1;
+  }
+
+  .ttl-area .sub-txt {
+    font-size: 0.24rem;
+  }
+
+  /* Hero */
+  #mv .inner {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Restore exact origin sizes on desktop */
+  #mv .contents-area h1 {
+    font-size: 0.64rem;
+    line-height: 1.4;
+  }
+
+  #mv .contents-area .txt1 {
+    font-size: 0.2rem;
+    line-height: 2;
+    margin-top: 0.34rem;
+  }
+
+  #mv .contents-area .txt2 {
+    font-size: 0.32rem;
+    line-height: 1.5;
+    margin-top: 0.24rem;
+  }
+
+  #mv .contents-area .btn {
+    margin-top: 0.64rem;
+    width: auto;
+    max-width: 3.68rem;
+    font-size: 0.24rem;
+    height: 0.8rem;
+  }
+
+  /* img-contents */
+  .img-contents {
+    margin-top: 2rem;
+  }
+
+  .img-contents picture img {
+    height: 7.2rem;
+    object-fit: cover;
+  }
+
+  /* WORRIES */
+  #worries .worries-contents .txt-area li {
+    font-size: 0.24rem;
+    /* 24px on PC/tablet */
+    display: flex;
+    font-weight: 600;
+    text-align: left;
+  }
+
+  /* WCD */
+  #wcd {
+    margin-top: 2rem;
+  }
+
+  #wcd .wcd-slider {
+    margin-top: 0.8rem;
+  }
+
+  #wcd .wcd-slider .slide-box .txt-area {
+    padding: 0.24rem 0.4rem 0.32rem;
+  }
+
+  #wcd .wcd-slider .slide-box .txt-area h3 {
+    font-size: 0.24rem;
+  }
+
+  #wcd .wcd-slider .slide-box .txt-area p {
+    font-size: 0.18rem;
+  }
+
+
+  /* MERIT */
+  #merit {
+    margin-top: 2rem;
+  }
+
+  #merit .merit-contents {
+    padding: 1.28rem 1.05rem;
+  }
+
+  #merit .txt-area p {
+    font-size: 0.18rem;
+  }
+
+  /* PARTNER */
+  #partner {
+    margin-top: 2rem;
+  }
+
+  /* FAQ */
+  #faq {
+    margin-top: 2rem;
+  }
+
+  #faq .inner .txt-area {
+    padding: 1.06rem 1.7rem;
+  }
+
+  #faq .inner .txt-area div {
+    gap: 0.32rem;
+    padding-bottom: 0.5rem;
+  }
+
+  #faq .inner .txt-area dt {
+    font-size: 0.2rem;
+  }
+
+  #faq .inner .txt-area dd {
+    font-size: 0.24rem;
+  }
+
+  /* CONTACT */
+  #contact {
+    margin-top: 2rem;
+    padding-top: 1.35rem;
+    padding-bottom: 1.2rem;
+  }
+
+  #contact .txt-area h3 {
+    font-size: 0.32rem;
+  }
+
+  #contact .txt-area p {
+    font-size: 0.24rem;
+  }
+
+  #contact .txt-area .btn {
+    margin-top: 0.8rem;
+    width: auto;
+    max-width: 3.68rem;
+  }
+
+  /* Footer */
+  #mainFooter {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+}
+
+#contact .txt-area p {
+  font-size: 0.24rem;
+  /* 16px */
+  font-weight: 500;
+  color: #fff;
+  margin-top: 0.32rem;
+}
+
+@media screen and (max-width: 768px) {
+  #contact .txt-area p {
+    margin-top: 0.24rem;
+  }
+}
+
+#contact .txt-area .btn {
+  margin-top: 0.8rem;
+}
+
+@media screen and (max-width: 768px) {
+  #contact .txt-area .btn {
+    margin-top: 0.32rem;
+  }
+}
+
+#contact .txt-area span {
+  font-size: 0.16rem;
+  font-weight: 400;
+  color: #fff;
+  display: block;
+  margin-top: 0.4rem;
+}
+
+@media screen and (max-width: 768px) {
+  #contact .txt-area span {
+    margin-top: 0.20rem;
+  }
+}
+
+/*/////////////////////////////////////////
+//  footer
+/////////////////////////////////////////*/
+#mainFooter {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+@media screen and (max-width: 768px) {
+  #mainFooter {
+    padding-top: 0.64rem;
+    /* Reduced by half */
+    padding-bottom: 0.64em;
+    padding-left: 0.16rem;
+    padding-right: 0.16rem;
+  }
+}
+
+#mainFooter .instagram {
+  width: 0.4rem;
+  margin: 0 auto;
+  display: block;
+}
+
+#mainFooter h2 {
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.24rem;
+  margin-top: 0.4rem;
+}
+
+@media screen and (max-width: 768px) {
+  #mainFooter h2 {
+    font-size: 0.2rem;
+    margin-top: 0.32rem;
+  }
+}
+
+#mainFooter ul {
+  text-align: center;
+  margin-top: 0.24rem;
+}
+
+#mainFooter ul li {
+  font-size: 0.18rem;
+}
+
+@media screen and (max-width: 768px) {
+  #mainFooter ul li {
+    font-size: 0.16rem;
+  }
+}
+
+#mainFooter ul .addr {
+  line-height: 1.5;
+  margin-bottom: 0.24rem;
+  font-weight: 400;
+}
+
+#mainFooter ul .mail,
+#mainFooter ul .tel {
+  display: flex;
+  justify-content: center;
+  gap: 0.08rem;
+  font-weight: 400;
+  margin-top: 0.12rem;
+}
+
+#mainFooter ul .mail span,
+#mainFooter ul .tel span {
+  font-weight: 600;
+}
+
+#mainFooter .btn {
+  margin: 0.24rem auto 0;
+}
+
+/* Mobile-specific improvements */
+@media screen and (max-width: 480px) {
+
+  /* Improve touch targets */
+  .btn,
+  a,
+  button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Reduce animation complexity on mobile */
+  * {
+    transition-duration: 0.2s !important;
+  }
+
+  /* Improve text readability */
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  /* Improve form elements */
+  input,
+  select,
+  textarea {
+    font-size: 16px;
+    /* Prevents zoom on iOS */
+  }
+
+  /* Better spacing for mobile */
+  /* .inner {
+    padding: 0 0.16rem;
+  } */
+
+  /* Improve footer on mobile */
+  #mainFooter {
+    padding-left: 0.12rem;
+    padding-right: 0.12rem;
+    padding-top: 0.48rem;
+    padding-bottom: 0.48rem;
+    /* Further reduced for small mobile */
+  }
+
+  #mainFooter h2 {
+    font-size: 0.18rem;
+  }
+
+  #mainFooter ul li {
+    font-size: 0.14rem;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
