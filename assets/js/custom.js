@@ -13,6 +13,29 @@ $(document).ready(function() {
     });
 });
 
+// Scroll Animation Observer
+$(document).ready(function() {
+    // Create intersection observer for scroll animations
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, observerOptions);
+
+    // Observe all animated elements
+    const animatedElements = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .scale-in');
+    animatedElements.forEach(el => {
+        observer.observe(el);
+    });
+});
+
 $(function () {
     var pagetop = $('#page_top');
     // ボタン非表示
