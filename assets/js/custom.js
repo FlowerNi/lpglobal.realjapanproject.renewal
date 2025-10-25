@@ -1,3 +1,27 @@
+// Scroll to Top Button
+$(document).ready(function() {
+    const scrollToTopBtn = $('#scrollToTop');
+    
+    // Show/hide button based on scroll position
+    $(window).on('scroll', function() {
+        const scrollTop = $(window).scrollTop();
+        
+        if (scrollTop > 300) {
+            scrollToTopBtn.addClass('visible');
+        } else {
+            scrollToTopBtn.removeClass('visible');
+        }
+    });
+    
+    // Smooth scroll to top when clicked
+    scrollToTopBtn.on('click', function(e) {
+        e.preventDefault();
+        $('html, body').animate({
+            scrollTop: 0
+        }, 800, 'easeInOutCubic');
+    });
+});
+
 // Header scroll effect - similar to Cursor.com
 $(document).ready(function() {
     const headerInner = $('.header-inner');

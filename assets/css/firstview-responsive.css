@@ -49,6 +49,61 @@
 .stagger-delay-4 { transition-delay: 0.4s; }
 .stagger-delay-5 { transition-delay: 0.5s; }
 
+/* Scroll to Top Button - Bottom Right Corner */
+.scroll-to-top {
+  position: fixed;
+  bottom: 0.3rem;
+  right: 0.3rem;
+  width: 0.53rem;
+  height: 0.53rem;
+  background: linear-gradient(135deg, #000000 0%, #333333 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(6px) scale(0.5);
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  z-index: 1000;
+}
+
+.scroll-to-top:hover {
+  background: linear-gradient(135deg, #333333 0%, #000000 100%);
+  transform: translateY(-1px) scale(1.2);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.scroll-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+
+.scroll-to-top svg {
+  width: 0.2rem;
+  height: 0.2rem;
+}
+
+/* Mobile adjustments for scroll-to-top button */
+@media (max-width: 768px) {
+  .scroll-to-top {
+    bottom: 0.2rem;
+    right: 0.2rem;
+    width: 0.47rem;
+    height: 0.47rem;
+  }
+  
+  .scroll-to-top svg {
+    width: 0.17rem;
+    height: 0.17rem;
+  }
+}
+
 /* FirstView Responsive CSS - Maintains Perfect Proportions Across All Screen Sizes */
 
 /* Force consistent root font-size for all viewport sizes to maintain rem proportions */
@@ -113,6 +168,16 @@ section {
 
 .header-inner .logo {
   margin: 0;
+}
+
+.header-inner .logo a {
+  display: block;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.header-inner .logo a:hover {
+  opacity: 0.8;
 }
 
 .header-inner .logo img {
